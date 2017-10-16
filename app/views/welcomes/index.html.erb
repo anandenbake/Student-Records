@@ -1,0 +1,21 @@
+<h1>Welcomes to Student Record</h1>
+
+<% if student_signed_in? %>
+  <li>
+  <%= link_to('Logout', destroy_student_session_path, method: :delete) %>        
+  </li>
+<% elsif admin_signed_in?%>
+  <li>
+    <%= link_to('Logout', destroy_admin_session_path, method: :delete) %>        
+
+
+<% else %>
+  <li>
+<%= link_to 'Log in as a Admin',  new_admin_session_path %>
+  </li>
+  <li>
+  <%= link_to 'Log in as a Student', new_student_session_path %>  </li>
+
+  </li>
+<% end %>
+
