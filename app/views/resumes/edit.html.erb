@@ -1,0 +1,51 @@
+
+<h1>Edit Student Informations</h1>
+ 
+<%= form_for (@student), url: resume_path do |form| %>
+ 
+  <% if @student.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@student.errors.count, "error") %> prohibited
+        this Informattion from being saved:
+      </h2>
+      <ul>
+        <% @student.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+ 
+  <p>
+    <%= form.label :First_name %><br>
+    <%= form.text_field :first_name %>
+  </p>
+
+  <p>
+    <%= form.label :Last_name %><br>
+    <%= form.text_field :last_name %>
+  </p>
+
+  <p>
+    <%= form.label :Phonenumber %><br>
+    <%= form.text_field :phonenum %>
+  </p>
+ 
+  <p>
+    <%= form.label :college_name %><br>
+    <%= form.text_field :college_name %>
+  </p>
+
+  <p>
+    <%= form.label :Address %><br>
+    <%= form.text_field :address %>
+  </p>
+ 
+  <p>
+    <%= form.submit %>
+  </p>
+ 
+<% end %>
+ 
+<%= link_to 'Back', root_path %>
