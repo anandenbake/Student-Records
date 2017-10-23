@@ -1,11 +1,21 @@
+
 class ResumesController < ApplicationController
 	def index
-		
+
 	end
 
 	def show
 		 @student = Student.find(params[:id])
 
+		 respond_to do |format|
+		 	format.html
+		 	format.pdf do
+		 		pdf = ResumePdf.new(@student)
+		 		send_data pdf.render, filename: "resume_#{@student.id}.pdf",
+		 							  type: "application/pdf",
+		 							  disposition: "inline"
+		 	end
+		 end
 	end
 
 	def edit
@@ -13,7 +23,6 @@ class ResumesController < ApplicationController
 	end
 
 	def update
-		
 		@student = Student.find(params[:id])
 			if @student.update(student_params)
 				redirect_to 

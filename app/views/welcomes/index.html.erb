@@ -5,25 +5,42 @@
   <%= link_to('Logout', destroy_student_session_path, method: :delete) %>        
   </li>
 <% elsif admin_signed_in?%>
+
   <h1>All Student</h1>
- 
-<table>
+
+<%= form_tag root_path, :method => 'get', :id => "students_search" do %>
+  <p>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search", :first_name => nil %>
+  </p>
+<% end %>
+
+<table id="students" class="display">
+  <thead>
   <tr>
     <th>First name</th>
     <th>Last name</th>
+    <th>INFO</th>
   </tr>
- 
+ </thead>
+ <tbody>
   <% @students.each do |student| %>
     <tr>
       <td><%= student.first_name %></td>
       <td><%= student.last_name %></td>
       <td><%= link_to 'Show', resume_path(student) %></td>
+
     </tr>
+
   <% end %>
+
+  </tbody>   
 </table>
+
   <li>
 
-    <%= link_to('Logout', destroy_admin_session_path, method: :delete) %>        
+    <%= link_to('Logout', destroy_admin_session_path, method: :delete) %>  
+    <%= link_to 'CSV Download', root_path(:format => :csv) %>
 </li>
 
 <% else %>
@@ -34,6 +51,7 @@
   <%= link_to 'Log in as a Student', new_student_session_path %>  </li>
 
   </li>
+
 <% end %>
 
 

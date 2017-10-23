@@ -73,4 +73,7 @@
 </p>
 
 
- <td><%= link_to 'Back', profiles_path %></td>
+ <td><%= link_to 'Back', profiles_path() %></td><br />
+
+
+ <%= link_to 'Download(PDF)', resume_path("1",format: "pdf") %>

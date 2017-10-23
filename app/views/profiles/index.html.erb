@@ -1,21 +1,24 @@
 <%= link_to 'Go home', root_url %><br /><br />
 <h2>My Profile </h2>
 
-<table>
-  <tr>
-    <th>First name</th>
-    <th>Last Name</th>
-    <th>phonenum</th>
-    <th>college_name</th>
-    <th>address</th>
-  </tr>
- 
+<table id="products">
+  <thead>
     <tr>
-      <td><%= current_student.first_name %></td>
-      <td><%= current_student.last_name %></td>
-      <td><%= current_student.phonenum %></td>
-      <td><%= current_student.college_name %></td>
-      <td><%= current_student.address %></td>   
+      <th>First name</th>
+      <th>Last Name</th>
+      <th>phonenum</th>
+      <th>college_name</th>
+      <th>address</th>
+    </tr>
+   </thead>
+   <tbody>
+      <tr>
+        <td><%= current_student.first_name %></td>
+        <td><%= current_student.last_name %></td>
+        <td><%= current_student.phonenum %></td>
+        <td><%= current_student.college_name %></td>
+        <td><%= current_student.address %></td>  
+    </tbody> 
 </table>
 
       <td><%= link_to 'Edit',  edit_student_registration_path %></td><br /><br />
